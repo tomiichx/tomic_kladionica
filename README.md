@@ -6,6 +6,10 @@ Preview: https://streamable.com/uu7nqr
 - FiveM System for those who would like to implement something new into the RolePlay world. 
 - Kladara, za sve nase kockare. :)
 
+Dependencies:
+- zf_context
+- zf_dialog
+
 TODO:
 /
 

@@ -3,7 +3,7 @@ Sports Betting / Kladionica [FiveM] | Optimised > 0.00ms
 
 Preview: https://streamable.com/uu7nqr
 
-- FiveM System for those who would like to implement something new into the RolePlay world. 
+- Sports betting for those who would like to implement something new into the RolePlay world. 
 - Kladara, za sve nase kockare. :)
 
 Dependencies:

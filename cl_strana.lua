@@ -18,35 +18,24 @@ AddEventHandler('esx:setJob', function(job)
 	PlayerData.job = job
 end)
 
-function PomocniText(tekst)
-    SetTextComponentFormat("STRING")
-    AddTextComponentString(tekst)
-    DisplayHelpTextFromStringLabel(0, 0, 1, -1)
-end
-
-CreateThread(function()
-    while true do
-        Wait(0)
-        local igrac = PlayerPedId()
-        local kordinate = GetEntityCoords(igrac)
-        local distanca = #(kordinate - Config.Kladionica.Lokacija)
-        local spavaj = true
-        if distanca < 10 then
-            spavaj = false
-            DrawMarker(2, Config.Kladionica.Lokacija, 0.0, 0.0, 0.0, 0.0, 0, 0.0, 0.15, 0.15, 0.15, 200, 0, 50, 230, true, true, 2, true, false, false, false)
-            DrawMarker(2, Config.Kladionica.Lokacija, 0.0, 0.0, 0.0, 0.0, 0, 0.0, 0.2, 0.2, 0.2, 255, 255, 255, 150, false, true, 1, true, false, false, false)
-
-            if distanca < 1.5 then
-                PomocniText("Pritisnite ~INPUT_VEH_HORN~ da pogledate danasnju ponudu!")
-                if IsControlJustReleased(0, 38) then
-                    TriggerEvent('devtomic_kladionica:otvori')
-                end
-            end
-        end
-
-        if spavaj then Wait(2000) end
-    end
+Citizen.CreateThread(function()
+		
+exports["qtarget"]:AddCircleZone("kladara", vector3(Config.Kladionica.Lokacija), 1.35, {
+name="kladara",
+debugPoly=false,
+useZ=true,
+}, {
+options = {
+                      {
+                          event = "devtomic_kladionica:otvori",
+                          icon = "fas fa-envelope",
+                          label = "Otvori Kladaru",
+                      },
+                   },
+                     distance = 2.5
+            })                  
 end)
+
 
 RegisterNetEvent('devtomic_kladionica:otvori')
 AddEventHandler('devtomic_kladionica:otvori', function()
